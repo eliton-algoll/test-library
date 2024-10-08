@@ -15,6 +15,8 @@ class Autor extends Model
 
     protected $table = 'Autor';
 
+    public $timestamps = false;
+
     public function livros()
     {
         return $this->belongsToMany(Livro::class, 'Livro_Autor', 'CodAu', 'CodL');

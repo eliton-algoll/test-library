@@ -15,6 +15,8 @@ class Assunto extends Model
 
     protected $table = 'Assunto';
 
+    public $timestamps = false;
+
     public function livros()
     {
         return $this->belongsToMany(Livro::class, 'Livro_Assunto', 'CodAs', 'CodL');

@@ -19,6 +19,10 @@ class Livro extends Model
 
     protected $table = 'Livro';
 
+    protected $primaryKey = 'CodL';
+
+    public $timestamps = false;
+
     protected $casts = [
         'Valor' => 'float',
     ];

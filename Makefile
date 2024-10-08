@@ -6,6 +6,9 @@ EXEC_DOCKER ?= docker-compose exec $(APP_SERVICE)
 install:
 	docker-compose up -d --build
 
+up:
+	docker-compose up -d
+
 down:
 	docker-compose down
 
