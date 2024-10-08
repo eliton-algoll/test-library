@@ -1,51 +1,56 @@
 <?php
 
-use App\Http\Controllers\Api\Books\CreateAutorAction;
-use App\Http\Controllers\Api\Books\CreateLivroAction;
-use App\Http\Controllers\Api\Books\DeleteAutorAction;
-use App\Http\Controllers\Api\Books\DeleteLivroAction;
-use App\Http\Controllers\Api\Books\GetAutorAction;
-use App\Http\Controllers\Api\Books\GetLivroAction;
-use App\Http\Controllers\Api\Books\ListAutoresAction;
-use App\Http\Controllers\Api\Books\ListLivrosAction;
-use App\Http\Controllers\Api\Books\UpdateAutorAction;
-use App\Http\Controllers\Api\Books\UpdateLivroAction;
+use App\Http\Controllers\Api\Books\CreateSubjectAction;
+use App\Http\Controllers\Api\Books\CreateAuthorAction;
+use App\Http\Controllers\Api\Books\CreateBookAction;
+use App\Http\Controllers\Api\Books\DeleteAuthorAction;
+use App\Http\Controllers\Api\Books\DeleteBookAction;
+use App\Http\Controllers\Api\Books\DeleteSubjectAction;
+use App\Http\Controllers\Api\Books\ListSubjectsAction;
+use App\Http\Controllers\Api\Books\ShowAuthorAction;
+use App\Http\Controllers\Api\Books\ShowBookAction;
+use App\Http\Controllers\Api\Books\ListAuthorsAction;
+use App\Http\Controllers\Api\Books\ListBooksAction;
+use App\Http\Controllers\Api\Books\ShowSubjectAction;
+use App\Http\Controllers\Api\Books\UpdateAuthorAction;
+use App\Http\Controllers\Api\Books\UpdateBookAction;
+use App\Http\Controllers\Api\Books\UpdateSubjectAction;
 use Illuminate\Support\Facades\Route;
 
 Route::name('api')->group(function(): void {
-    Route::group(['prefix' => 'livro'], function() {
-        Route::post('/', CreateLivroAction::class)->name('create.livro');
+    Route::group(['prefix' => 'book'], function() {
+        Route::post('/', CreateBookAction::class)->name('create.book');
 
-        Route::get('/{codLivro}', GetLivroAction::class)->name('get.livro');
+        Route::get('/{codBook}', ShowBookAction::class)->name('get.book');
 
-        Route::patch('/{codLivro}', UpdateLivroAction::class)->name('update.livro');
+        Route::patch('/{codBook}', UpdateBookAction::class)->name('update.book');
 
-        Route::get('/', ListLivrosAction::class)->name('list.livros');
+        Route::get('/', ListBooksAction::class)->name('list.books');
 
-        Route::delete('/{CodLivro}', DeleteLivroAction::class)->name('delete.livro');
+        Route::delete('/{codBook}', DeleteBookAction::class)->name('delete.book');
     });
 
-    Route::group(['prefix' => 'autor'], function() {
-        Route::post('/', CreateAutorAction::class)->name('create.autor');
+    Route::group(['prefix' => 'author'], function() {
+        Route::post('/', CreateAuthorAction::class)->name('create.author');
 
-        Route::get('/{codAutor}', GetAutorAction::class)->name('get.autor');
+        Route::get('/{codAuthor}', ShowAuthorAction::class)->name('get.author');
 
-        Route::patch('/{codAutor}', UpdateAutorAction::class)->name('update.autor');
+        Route::patch('/{codAuthor}', UpdateAuthorAction::class)->name('update.author');
 
-        Route::get('/', ListAutoresAction::class)->name('list.autores');
+        Route::get('/', ListAuthorsAction::class)->name('list.authors');
 
-        Route::delete('/{codAutor}', DeleteAutorAction::class)->name('delete.autor');
+        Route::delete('/{codAuthor}', DeleteAuthorAction::class)->name('delete.author');
     });
 
-    Route::group(['prefix' => 'assunto'], function() {
-        Route::post('/', CreateAutorAction::class)->name('create.assunto');
+    Route::group(['prefix' => 'subject'], function() {
+        Route::post('/', CreateSubjectAction::class)->name('create.subject');
 
-        Route::get('/{codAssunto}', GetAutorAction::class)->name('get.assunto');
+        Route::get('/{codSubject}', ShowSubjectAction::class)->name('get.subject');
 
-        Route::patch('/{codAssunto}', UpdateAutorAction::class)->name('update.assunto');
+        Route::patch('/{codSubject}', UpdateSubjectAction::class)->name('update.subject');
 
-        Route::get('/', ListAutoresAction::class)->name('list.assuntos');
+        Route::get('/', ListSubjectsAction::class)->name('list.subjects');
 
-        Route::delete('/{codAssunto}', DeleteAutorAction::class)->name('delete.assunto');
+        Route::delete('/{codSubject}', DeleteSubjectAction::class)->name('delete.subject');
     });
 });
