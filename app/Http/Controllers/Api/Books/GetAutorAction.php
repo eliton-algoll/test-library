@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers\Api\Books;
 
-use App\Domains\Books\Services\LivroService;
+use App\Domains\Books\Services\AutorService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
-class GetLivroAction
+class GetAutorAction
 {
-    public function __construct(private readonly LivroService $service)
+    public function __construct(private readonly AutorService $service)
     {}
 
     /**
      * @throws Throwable
      */
-    public function __invoke(int $CodLivro): JsonResponse
+    public function __invoke(int $codAutor): JsonResponse
     {
         try {
 
-            $livro = $this->service->findByCode($CodLivro);
+            $autor = $this->service->findByCode($codAutor);
 
-            return response()->json($livro->toArray());
+            return response()->json($autor->toArray());
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => $e->getMessage(),

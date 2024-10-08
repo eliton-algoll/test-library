@@ -7,6 +7,7 @@ use App\Domains\Books\Services\LivroService;
 use App\Http\Requests\Books\CreateLivroRequest;
 use App\Http\Resources\LivroListResource;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
@@ -19,7 +20,7 @@ class ListLivrosAction
     /**
      * @throws Throwable
      */
-    public function __invoke(Request $request)
+    public function __invoke(Request $request): JsonResponse
     {
         $order = $request->get('order', []);
         $itemsPerPage = $request->get('itemsPerPage', 20);

@@ -2,28 +2,28 @@
 
 namespace App\Http\Controllers\Api\Books;
 
-use App\Domains\Books\Services\CreateLivroService;
-use App\Http\Requests\Books\CreateLivroRequest;
+use App\Domains\Books\Services\CreateAutorService;
+use App\Http\Requests\Books\UpsertAutorRequest;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
-class CreateLivroAction
+class CreateAutorAction
 {
-    public function __construct(private readonly CreateLivroService $service)
+    public function __construct(private readonly CreateAutorService $service)
     {}
 
     /**
      * @throws Throwable
      */
-    public function __invoke(CreateLivroRequest $request): JsonResponse
+    public function __invoke(UpsertAutorRequest $request): JsonResponse
     {
         try {
-            $livroDTO = $request->toDTO();
+            $autorDTO = $request->toDTO();
 
-            $livro = $this->service->firstOrCreateByDTO($livroDTO);
+            $autor = $this->service->firstOrCreateByDTO($autorDTO);
 
-            return response()->json($livro->toArray());
+            return response()->json($autor->toArray());
         } catch (Throwable $th) {
             return response()->json([
                 'message' => $th->getMessage(),

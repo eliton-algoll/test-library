@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Books;
 
 use App\Domains\Books\Services\UpdateLivroService;
 use App\Http\Requests\Books\UpdateLivroRequest;
+use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
@@ -15,7 +16,7 @@ class UpdateLivroAction
     /**
      * @throws Throwable
      */
-    public function __invoke(UpdateLivroRequest $request, int $CodLivro)
+    public function __invoke(UpdateLivroRequest $request, int $CodLivro): JsonResponse
     {
         try {
             $livroDTO = $request->toDTO();

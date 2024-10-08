@@ -13,11 +13,11 @@ class CreateLivroRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'titulo' => ['required', 'string'],
-            'editora' => ['required', 'string'],
+            'titulo' => ['required', 'string', 'max:40'],
+            'editora' => ['required', 'string', 'max:40'],
             'edicao' => ['required', 'integer'],
-            'anoPublicacao' => ['required', 'string'],
-            'valor' => ['required', 'numeric', 'gt:0.0'],
+            'anoPublicacao' => ['required', 'string', 'max:4'],
+            'valor' => ['required', 'numeric'],
         ];
     }
 

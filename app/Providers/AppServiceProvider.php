@@ -2,7 +2,9 @@
 
 namespace App\Providers;
 
+use App\Domains\Books\Repositories\AutorRepositoryInterface;
 use App\Domains\Books\Repositories\LivroRepositoryInterface;
+use App\Infrastructure\Repositories\Books\AutorRepository;
 use App\Infrastructure\Repositories\Books\LivroRepository;
 use Illuminate\Support\ServiceProvider;
 
@@ -14,6 +16,8 @@ class AppServiceProvider extends ServiceProvider
     public function register(): void
     {
         $this->app->bind(LivroRepositoryInterface::class, LivroRepository::class);
+
+        $this->app->bind(AutorRepositoryInterface::class, AutorRepository::class);
     }
 
     /**

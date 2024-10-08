@@ -2,27 +2,27 @@
 
 namespace App\Http\Controllers\Api\Books;
 
-use App\Domains\Books\Services\LivroService;
+use App\Domains\Books\Services\DeleteAutorService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
-class GetLivroAction
+class DeleteAutorAction
 {
-    public function __construct(private readonly LivroService $service)
+    public function __construct(private readonly DeleteAutorService $service)
     {}
 
     /**
      * @throws Throwable
      */
-    public function __invoke(int $CodLivro): JsonResponse
+    public function __invoke(int $codAutor): JsonResponse
     {
         try {
 
-            $livro = $this->service->findByCode($CodLivro);
+            $this->service->deleteAutor($codAutor);
 
-            return response()->json($livro->toArray());
+            return response()->json([], Response::HTTP_NO_CONTENT);
         } catch (ModelNotFoundException $e) {
             return response()->json([
                 'message' => $e->getMessage(),
@@ -35,5 +35,4 @@ class GetLivroAction
             ], Response::HTTP_BAD_REQUEST);
         }
     }
-
 }

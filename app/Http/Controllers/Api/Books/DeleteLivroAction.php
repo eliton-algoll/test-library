@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\Books;
 
 use App\Domains\Books\Services\DeleteLivroService;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
+use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
@@ -15,7 +16,7 @@ class DeleteLivroAction
     /**
      * @throws Throwable
      */
-    public function __invoke(int $CodLivro)
+    public function __invoke(int $CodLivro): JsonResponse
     {
         try {
 

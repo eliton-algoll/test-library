@@ -2,14 +2,11 @@
 
 namespace App\Domains\Books\Services;
 
-use App\Domains\Books\DTOs\LivroDTO;
 use App\Domains\Books\Repositories\LivroRepositoryInterface;
 use App\Models\Livro;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Database\QueryException;
 use Illuminate\Pagination\Paginator;
 use Psr\Log\LoggerInterface;
-use RuntimeException;
 use Throwable;
 
 class LivroService

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $CodAu
- * @property string $nome
+ * @property string $Nome
  */
 class Autor extends Model
 {
@@ -15,7 +15,13 @@ class Autor extends Model
 
     protected $table = 'Autor';
 
+    protected $primaryKey = 'CodAu';
+
     public $timestamps = false;
+
+    public $fillable = [
+        'Nome'
+    ];
 
     public function livros()
     {
