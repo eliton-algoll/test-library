@@ -36,7 +36,7 @@ Desenvolver uma aplicação que realize o cadastro de livros, bem como autores e
     ```
 
 7. ** Caso esteja no Windows ou não tenha o Make instalado na mnáquina seguir os comando abaixo na ordem:**
-       ```bash
+   ```bash
    docker-compose up -d --build
    composer install
    php artisan migrate
