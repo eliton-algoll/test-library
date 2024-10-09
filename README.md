@@ -34,6 +34,13 @@ Desenvolver uma aplicação que realize o cadastro de livros, bem como autores e
    ```bash
    http://localhost:8080/
     ```
+
+7. ** Caso esteja no Windows ou não tenha o Make instalado na mnáquina seguir os comando abaixo na ordem:**
+       ```bash
+   docker-compose up -d --build
+   composer install
+   php artisan migrate
+    ```
    
 ### Comando úteis?
 1. **Rodar os testes:**
