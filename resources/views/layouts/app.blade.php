@@ -26,13 +26,16 @@
                 <div class="collapse navbar-collapse" id="navbarNav">
                     <ul class="navbar-nav ms-auto">
                         <li class="nav-item ">
-                            <a class="nav-link active" href="{{ url('/') }}"> <i class="fas fa-book"></i> Livros</a>
+                            <a class="nav-link" href="{{ url('/') }}"> <i class="fas fa-book"></i> Livros</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ url('/authors') }}"> <i class="fas fa-user"></i> Autores</a>
+                            <a class="nav-link" href="{{ url('/authors') }}"> <i class="fas fa-user"></i> Autores</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="{{ url('/subjects') }}"> <i class="fas fa-pen-nib"></i> Assuntos</a>
+                            <a class="nav-link" href="{{ url('/subjects') }}"> <i class="fas fa-pen-nib"></i> Assuntos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/report') }}"> <i class="fas fa-file-pdf"></i> Gerar Relatório</a>
                         </li>
                     </ul>
                 </div>

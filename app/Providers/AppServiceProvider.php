@@ -4,11 +4,13 @@ namespace App\Providers;
 
 use App\Domains\Books\Repositories\BookAuthorRepositoryInterface;
 use App\Domains\Books\Repositories\BookSubjectRepositoryInterface;
+use App\Domains\Books\Repositories\ReportBookViewRepositoryInterface;
 use App\Domains\Books\Repositories\SubjectRepositoryInterface;
 use App\Domains\Books\Repositories\AuthorRepositoryInterface;
 use App\Domains\Books\Repositories\BookRepositoryInterface;
 use App\Infrastructure\Repositories\Books\BookAuthorRepository;
 use App\Infrastructure\Repositories\Books\BookSubjectRepository;
+use App\Infrastructure\Repositories\Books\ReportBookViewRepository;
 use App\Infrastructure\Repositories\Books\SubjectRepository;
 use App\Infrastructure\Repositories\Books\AuthorRepository;
 use App\Infrastructure\Repositories\Books\BookRepository;
@@ -30,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->bind(BookAuthorRepositoryInterface::class, BookAuthorRepository::class);
 
         $this->app->bind(BookSubjectRepositoryInterface::class, BookSubjectRepository::class);
+
+        $this->app->bind(ReportBookViewRepositoryInterface::class, ReportBookViewRepository::class);
     }
 
     /**
