@@ -3,11 +3,12 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Author;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Book>
+ * @extends Factory<Author>
  */
-class LivroFactory extends Factory
+class AuthorFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +18,8 @@ class LivroFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'codAu' => fake()->unique()->randomNumber(5),
+            'name' => fake()->firstName(),
         ];
     }
 }

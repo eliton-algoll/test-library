@@ -28,7 +28,7 @@ class DeleteBookService
             $this->bookRepository->delete($codBook);
         } catch (ModelNotFoundException $e) {
             $this->logger->error(sprintf('[%s] Unexpected Error when getting a book by code', __METHOD__), [
-                'code_book' => $codBook,
+                'cod_book' => $codBook,
                 'error' => $e->getMessage(),
             ]);
 

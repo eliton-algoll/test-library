@@ -9,6 +9,9 @@ install:
 up:
 	docker-compose up -d
 
+test:
+	$(EXEC_DOCKER) vendor/bin/phpunit
+
 down:
 	docker-compose down
 

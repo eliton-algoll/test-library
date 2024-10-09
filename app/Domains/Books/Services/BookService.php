@@ -21,14 +21,14 @@ class BookService
      */
     public function findByCode(int $codBook): ?Book {
         $this->logger->info(sprintf('[%s] Try Getting a book by code', __METHOD__), [
-            'code_book' => $codBook,
+            'cod_book' => $codBook,
         ]);
 
         try {
             return $this->bookRepository->get($codBook);
         } catch (ModelNotFoundException $e) {
-            $this->logger->error(sprintf('[%s] Unexpected Error when getting a book by code', __METHOD__), [
-                'code_book' => $codBook,
+            $this->logger->error(sprintf('[%s] Error when getting a book by code', __METHOD__), [
+                'cod_book' => $codBook,
                 'error' => $e->getMessage(),
             ]);
 
@@ -43,14 +43,21 @@ class BookService
         }
     }
 
+    /**
+     * @throws Throwable
+     */
     public function listAll(array $filters, array $order, int $itemsPerPage): Paginator {
         $this->logger->info(sprintf('[%s] Try Getting all books', __METHOD__));
 
         try {
             return $this->bookRepository->getAll($filters, $order, $itemsPerPage);
         } catch (Throwable $th){
-            dd($th->getMessage());
-        }
+            $this->logger->error(sprintf('[%s] Unexpected Error when getting all books', __METHOD__), [
+                'filters' => $filters,
+                'error' => $th->getMessage(),
+            ]);
 
+            throw $th;
+        }
     }
 }

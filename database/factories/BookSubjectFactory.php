@@ -2,12 +2,13 @@
 
 namespace Database\Factories;
 
+use App\Models\BookSubject;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Subject>
+ * @extends Factory<BookSubject>
  */
-class AssuntoFactory extends Factory
+class BookSubjectFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,7 +18,8 @@ class AssuntoFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'livro_codL' => fake()->unique()->randomNumber(5),
+            'assunto_codAu' => fake()->unique()->randomNumber(5),
         ];
     }
 }
