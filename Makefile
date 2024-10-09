@@ -14,6 +14,8 @@ test:
 
 down:
 	docker-compose down
+	$(EXEC_DOCKER) php artisan key:generate
+	$(EXEC_DOCKER) composer install
 
 artisan:
 	$(EXEC_DOCKER) php artisan $(filter-out $@,$(MAKECMDGOALS))
