@@ -35,7 +35,7 @@ Desenvolver uma aplicação que realize o cadastro de livros, bem como autores e
    http://localhost:8080/
     ```
 
-7. ** Caso esteja no Windows ou não tenha o Make instalado na mnáquina seguir os comando abaixo na ordem:**
+7. ** Caso esteja no Windows ou não tenha o Make instalado na máquina seguir os comando abaixo na ordem:**
    ```bash
    docker-compose up -d --build
    composer install
@@ -46,6 +46,8 @@ Desenvolver uma aplicação que realize o cadastro de livros, bem como autores e
 1. **Rodar os testes:**
    ```bash
    make test
+   ou
+   vendor/bin/phpunit na raiz do projeto
    ```
 2. **Rodar o rollback das migrations:**
    ```bash
