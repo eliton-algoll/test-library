@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Support\Collection;
 
 /**
  * @property int $codL
@@ -36,13 +37,13 @@ class Book extends Model
 
     public function authors(): BelongsToMany
     {
-        return $this->belongsToMany(Author::class, 'livro_autor', 'codL', 'codAu')
+        return $this->belongsToMany(Author::class, 'livro_autor', 'livro_codL', 'autor_codAu')
             ->withTimestamps();
     }
 
     public function subjects(): BelongsToMany
     {
-        return $this->belongsToMany(Subject::class, 'livro_assunto', 'codL', 'codAs')
+        return $this->belongsToMany(Subject::class, 'livro_assunto', 'livro_codL', 'assunto_codAs')
             ->withTimestamps();
     }
 }

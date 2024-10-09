@@ -9,4 +9,6 @@ interface BookAuthorRepositoryInterface
     public function create(int $codBook, int $codAuthor): BookAuthor;
 
     public function delete(int $codBook, int $codAuthor): void;
+
+    public function deleteByCodBook(int $codBook): void;
 }

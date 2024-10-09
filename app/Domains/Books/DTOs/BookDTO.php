@@ -10,8 +10,8 @@ final class BookDTO
         private string $edicao,
         private string $anoPublicacao,
         private float $valor,
-        private array $autores,
-        private array $assuntos,
+        private array $codAutores,
+        private int $codAssunto,
     ) {}
 
     public function toArray(): array
@@ -25,13 +25,13 @@ final class BookDTO
         ];
     }
 
-    public function getSubjects(): array
+    public function getCodSubject(): int
     {
-        return $this->assuntos;
+        return $this->codAssunto;
     }
 
-    public function getAuthors(): array
+    public function getCodAuthors(): array
     {
-        return $this->autores;
+        return $this->codAutores;
     }
 }

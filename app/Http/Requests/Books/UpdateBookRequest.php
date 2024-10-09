@@ -17,7 +17,10 @@ class UpdateBookRequest extends FormRequest
             'editora' => ['sometimes', 'string'],
             'edicao' => ['sometimes', 'integer'],
             'anoPublicacao' => ['sometimes', 'string'],
-            'valor' => ['sometimes', 'numeric', 'gt:0.0'],
+            'valor' => ['sometimes', 'numeric'],
+            'codAutores' =>  ['sometimes', 'array'],
+            'codAutores.*' =>  ['integer'],
+            'codAssunto' =>  ['sometimes', 'integer'],
         ];
     }
 
@@ -29,6 +32,8 @@ class UpdateBookRequest extends FormRequest
             edicao: $this->get('edicao'),
             anoPublicacao: $this->get('anoPublicacao'),
             valor: $this->get('valor'),
+            codAutores: $this->get('codAutores'),
+            codAssunto: $this->get('codAssunto'),
         );
     }
 

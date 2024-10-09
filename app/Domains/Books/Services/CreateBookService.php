@@ -40,27 +40,20 @@ class CreateBookService
 
             $book = $this->bookRepository->create($bookDTO);
 
-            foreach($bookDTO->getAuthors() as $author) {
-                $authorDTO = new AuthorDTO(nome: $author);
-
-                $authorSaved = $this->authorRepository->create($authorDTO);
+            foreach($bookDTO->getCodAuthors() as $codAuthor) {
+                $authorSaved = $this->authorRepository->get($codAuthor);
 
                 $this->bookAuthorRepository->create($book->codL, $authorSaved->codAu);
             }
 
-            foreach($bookDTO->getSubjects() as $subject) {
-                $subjectDTO = new SubjectDTO(descricao: $subject);
+            $subjectSaved = $this->subjectRepository->get($bookDTO->getCodSubject());
 
-                $subjectSaved = $this->subjectRepository->create($subjectDTO);
-
-                $this->bookSubjectRepository->create($book->codL, $subjectSaved->codAs);
-            }
+            $this->bookSubjectRepository->create($book->codL, $subjectSaved->codAs);
 
             $this->bookRepository->commit();
 
             return $book;
         } catch (QueryException $e) {
-            dd($e->getMessage());
             $this->logger->error(sprintf('[%s] Error in database when creating a new book', __METHOD__), [
                 'book_dto' => $bookDTO->toArray(),
                 'error' => $e->getMessage(),

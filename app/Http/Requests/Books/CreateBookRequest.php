@@ -18,10 +18,9 @@ class CreateBookRequest extends FormRequest
             'edicao' => ['required', 'integer'],
             'anoPublicacao' => ['required', 'string', 'max:4'],
             'valor' => ['required', 'numeric'],
-            'autores' =>  ['required', 'array'],
-            'autores.*' =>  ['string'],
-            'assuntos' =>  ['required', 'array'],
-            'assuntos.*' =>  ['string'],
+            'codAutores' =>  ['required', 'array'],
+            'codAutores.*' =>  ['integer'],
+            'codAssunto' =>  ['required', 'integer'],
         ];
     }
 
@@ -33,8 +32,8 @@ class CreateBookRequest extends FormRequest
             edicao: $this->get('edicao'),
             anoPublicacao: $this->get('anoPublicacao'),
             valor: $this->get('valor'),
-            autores: $this->get('autores'),
-            assuntos: $this->get('assuntos'),
+            codAutores: $this->get('codAutores'),
+            codAssunto: $this->get('codAssunto'),
         );
     }
 

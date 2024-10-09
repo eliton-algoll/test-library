@@ -10,6 +10,8 @@ final class UpdateBookDTO
         private ?string $edicao,
         private ?string $anoPublicacao,
         private ?float $valor,
+        private ?array $codAutores,
+        private ?int $codAssunto,
     ) {}
 
     public function toArray(): array
@@ -21,5 +23,15 @@ final class UpdateBookDTO
             'anoPublicacao' => $this->anoPublicacao,
             'valor' => $this->valor,
         ], fn ($value) => $value !== null);
+    }
+
+    public function getCodSubject(): int
+    {
+        return $this->codAssunto;
+    }
+
+    public function getCodAuthors(): array
+    {
+        return $this->codAutores;
     }
 }

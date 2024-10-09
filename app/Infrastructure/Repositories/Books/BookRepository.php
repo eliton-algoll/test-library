@@ -46,7 +46,7 @@ class BookRepository implements BookRepositoryInterface
             'items_per_page' => $itemsPerPage,
         ]);
 
-        $queryBuilder = Book::query();
+        $queryBuilder = Book::query()->with(['authors', 'subjects']);
 
         if (!empty($filters)) {
             $titulo = $filters['titulo'];
@@ -55,16 +55,16 @@ class BookRepository implements BookRepositoryInterface
             $anoPublicacao = $filters['anoPublicacao'];
 
         $queryBuilder->when($titulo, function(Builder $queryBuilder, string $titulo) {
-            $queryBuilder->where(['Titulo' => $titulo]);
+            $queryBuilder->where(['livro.titulo' => $titulo]);
         })
             ->when($editora, function(Builder $queryBuilder, string $editora) {
-                $queryBuilder->where(['Editora' => $editora]);
+                $queryBuilder->where(['livro.editora' => $editora]);
             })
             ->when($edicao, function(Builder $queryBuilder, int $edicao) {
-                $queryBuilder->where(['Edicao' => $edicao]);
+                $queryBuilder->where(['livro.edicao' => $edicao]);
             })
             ->when($anoPublicacao, function(Builder $queryBuilder, string $anoPublicacao) {
-                $queryBuilder->where(['AnoPublicacao' => $anoPublicacao]);
+                $queryBuilder->where(['livro.anoPublicacao' => $anoPublicacao]);
             });
         }
 
@@ -99,6 +99,9 @@ class BookRepository implements BookRepositoryInterface
         ]);
 
         $book = Book::query()->where('codL', $codBook)->firstOrFail();
+
+        $book->subjects()->detach();
+        $book->authors()->detach();
 
         $book->delete();
     }

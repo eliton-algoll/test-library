@@ -46,6 +46,11 @@ class BookService
     public function listAll(array $filters, array $order, int $itemsPerPage): Paginator {
         $this->logger->info(sprintf('[%s] Try Getting all books', __METHOD__));
 
-        return $this->bookRepository->getAll($filters, $order, $itemsPerPage);
+        try {
+            return $this->bookRepository->getAll($filters, $order, $itemsPerPage);
+        } catch (Throwable $th){
+            dd($th->getMessage());
+        }
+
     }
 }

@@ -3,7 +3,6 @@
 namespace App\Infrastructure\Repositories\Books;
 
 use App\Domains\Books\Repositories\BookSubjectRepositoryInterface;
-use App\Models\BookAuthor;
 use App\Models\BookSubject;
 use Psr\Log\LoggerInterface;
 
@@ -38,11 +37,22 @@ class BookSubjectRepository implements BookSubjectRepositoryInterface
             'cod_subject' => $codSubject,
         ]);
 
-        $bookAuthor = BookAuthor::query()
+        $bookSubject = BookSubject::query()
             ->where('livro_codL', $codBook)
             ->where('assunto_codAs', $codSubject)
             ->firstOrFail();
 
-        $bookAuthor->delete();
+        $bookSubject->delete();
+    }
+
+    public function deleteByCodBook(int $codBook): void
+    {
+        $this->logger->info(sprintf('[%s] Deleting book subject by code book', __METHOD__), [
+            'cod_book' => $codBook,
+        ]);
+
+        BookSubject::query()
+            ->where('livro_codL', $codBook)
+            ->delete();
     }
 }

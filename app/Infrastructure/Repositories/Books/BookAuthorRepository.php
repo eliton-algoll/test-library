@@ -44,4 +44,15 @@ class BookAuthorRepository implements BookAuthorRepositoryInterface
 
         $bookAuthor->delete();
     }
+
+    public function deleteByCodBook(int $codBook): void
+    {
+        $this->logger->info(sprintf('[%s] Deleting book author by book code', __METHOD__), [
+            'cod_book' => $codBook,
+        ]);
+
+        BookAuthor::query()
+            ->where('livro_codL', $codBook)
+            ->delete();
+    }
 }

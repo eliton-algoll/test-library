@@ -8,13 +8,17 @@ use Illuminate\Http\Resources\Json\JsonResource;
 class ListBooksResource extends JsonResource
 {
     public function toArray($request): array {
+        $subjectResource = ListSubjectResource::collection($this->whenLoaded('subjects'));
+
         return [
-            'codL' => $this['codL'],
-            'titulo' => $this['titulo'],
-            'editora' => $this['editora'],
-            'edicao' => $this['edicao'],
-            'anoPublicacao' => $this['anoPublicacao'],
-            'valor' => $this['valor'],
+            'codL' => $this->codL,
+            'titulo' => $this->titulo,
+            'editora' => $this->editora,
+            'edicao' => $this->edicao,
+            'anoPublicacao' => $this->anoPublicacao,
+            'valor' => $this->valor,
+            'autores' => ListAuthorsResource::collection($this->whenLoaded('authors')),
+            'assunto' => $subjectResource[0],
         ];
     }
 
